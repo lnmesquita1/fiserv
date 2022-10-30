@@ -35,24 +35,18 @@ spring.datasource.password=123
 
 - Right click on the project > Run As > Spring Boot App
 
+## Configure OAuth2 Server
+- Run keycloak-19.0.3 locally on port 8080.
+- Create a login
+- Create realm > browse > and pick the file realm-export.json, which you can find inside the root repository
+- Create an admin user: users > role mapping > assing role > admin
+- Create a common user: users > role mapping > assing role > user
+- Regenerate client secret: Clients > sboot-delivery > Credentials > Regenerate
+
+## Get token using postman
+![alt text](https://github.com/lnmesquita1/fiserv/blob/master/get-token-example.png?raw=true)
+
 ## Swagger
 You can find all the endpoints by accessing this URL: http://localhost:8081/swagger-ui.html
-
-## Configure OAuth2 Server
-Change keycloak configurations inside file application.properties
-
-```bash
-## PostgreSQL
-keycloak.realm=fiserv
-keycloak.auth-server-url=http://localhost:8080/auth
-keycloak.ssl-required=external
-keycloak.resource=sboot-delivery
-keycloak.credentials.secret=3VFejqmqOXwjZGkxriCs2L8v21JG0fvV
-keycloak.use-resource-role-mappings=true
-keycloak.public-client=true
-keycloak.bearer-only=true
-keycloak.securityConstraints[0].authRoles[0] = admin
-keycloak.securityConstraints[0].authRoles[1] = user
-```
 
 
